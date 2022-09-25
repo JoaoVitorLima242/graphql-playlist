@@ -1,5 +1,7 @@
 import {Card} from 'reactstrap'
 import { useQuery, gql } from '@apollo/client';
+import { Link } from "react-router-dom";
+
 
 const GET_AUTHORS = gql`
     {
@@ -22,7 +24,7 @@ const AuthorList = ({openModal}) => {
         <Card className='p-4'>
             <h2>Authors</h2>
             {data.authors && data.authors.length > 0 && data.authors.map(({id, name}) => (
-                <li key={id} onClick={openModal}>{name}</li>
+                <Link to={'/author?id='+id}><li key={id}>{name}</li></Link>
             ))}
         </Card>
     )
