@@ -1,17 +1,17 @@
 import {Card} from 'reactstrap'
 import { useQuery, gql } from '@apollo/client';
 
-const GET_BOOKS = gql`
+const GET_AUTHORS = gql`
     {
-        books {
+        authors {
             id
             name
         }
     }
 `
 
-const BookList = ({openModal}) => {
-    const { loading, error, data } = useQuery(GET_BOOKS);
+const AuthorList = ({openModal}) => {
+    const { loading, error, data } = useQuery(GET_AUTHORS);
 
 
   if (loading) return <p>Loading...</p>;
@@ -20,12 +20,12 @@ const BookList = ({openModal}) => {
 
     return (
         <Card className='p-4'>
-            <h2>Books</h2>
-            {data.books && data.books.length > 0 && data.books.map(({id, name}) => (
+            <h2>Authors</h2>
+            {data.authors && data.authors.length > 0 && data.authors.map(({id, name}) => (
                 <li key={id} onClick={openModal}>{name}</li>
             ))}
         </Card>
     )
 }
 
-export default BookList
+export default AuthorList
