@@ -8,7 +8,12 @@ require('dotenv').config();
 const app = express()
 const mongoURI = process.env.MONGO_URI
 
-mongoose.connect(mongoURI)
+mongoose.connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+})
+
 mongoose.connection.once('open', () => {
     console.log('Connected to mongoDB')
 })
