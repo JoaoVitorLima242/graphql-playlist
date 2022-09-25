@@ -19,11 +19,11 @@ mongoose.connection.once('open', () => {
     console.log('Connected to mongoDB')
 })
 
+app.use(cors())
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true
 }));
-app.use(cors())
 
 app.listen(4000, () => {
     console.log('API is ON PORT 4000')

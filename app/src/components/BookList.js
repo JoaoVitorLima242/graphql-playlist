@@ -1,6 +1,17 @@
 import {Card} from 'reactstrap'
 
-const BookList = () => {
+// const getBooksQuery = gql`
+//     {
+//         books {
+//             id
+//             name
+//         }
+//     }
+// `
+
+
+const BookList = (props) => {
+    console.log(props)
     return (
         <Card className='p-4'>
             <h2>Books</h2>
