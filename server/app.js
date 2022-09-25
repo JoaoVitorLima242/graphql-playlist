@@ -2,8 +2,9 @@ const express = require('express')
 const graphqlHTTP = require('express-graphql')
 const schema = require('./schema/schema')
 const mongoose = require('mongoose')
-require('dotenv').config();
+const cors = require('cors')
 
+require('dotenv').config();
 
 const app = express()
 const mongoURI = process.env.MONGO_URI
@@ -22,6 +23,7 @@ app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true
 }));
+app.use(cors())
 
 app.listen(4000, () => {
     console.log('API is ON PORT 4000')
