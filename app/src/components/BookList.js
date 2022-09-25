@@ -1,23 +1,32 @@
 import {Card} from 'reactstrap'
+import { useQuery, gql } from '@apollo/client';
 
-// const getBooksQuery = gql`
-//     {
-//         books {
-//             id
-//             name
-//         }
-//     }
-// `
-
+const GET_BOOKS = gql`
+    {
+        books {
+            id
+            name
+        }
+    }
+`
 
 const BookList = (props) => {
-    console.log(props)
+
+    const { loading, error, data } = useQuery(GET_BOOKS);
+
+    const {books} = data
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :</p>;
+
+
     return (
         <Card className='p-4'>
             <h2>Books</h2>
-            <ul>
-                <li>Book name</li>
-            </ul>
+            {console.log(data)}
+            {books && books.length > 0 && books.map(({name}) => (
+                <li>{name}</li>
+            ))}
         </Card>
     )
 }
