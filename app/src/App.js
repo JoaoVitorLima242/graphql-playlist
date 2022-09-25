@@ -1,7 +1,15 @@
+import BookList from "./components/BookList";
+import { Col, Row} from 'reactstrap'
+
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
+    <div className="container">
+      <h1>GraphQL Book Playlist</h1>
+      <Row>
+        <Col>
+          <BookList />
+        </Col>
+      </Row>
     </div>
   );
 }
