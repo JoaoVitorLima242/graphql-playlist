@@ -1,8 +1,17 @@
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
 const schema = require('./schema/schema')
+const mongoose = require('mongoose')
+require('dotenv').config();
+
 
 const app = express()
+const mongoURI = process.env.MONGO_URI
+
+mongoose.connect(mongoURI)
+mongoose.connection.once('open', () => {
+    console.log('Connected to mongoDB')
+})
 
 app.use('/graphql', graphqlHTTP({
     schema,
