@@ -21,7 +21,10 @@ const BookList = ({openModal}) => {
 
     return (
         <Card className='p-4'>
-            <h2>Books</h2>
+            <div className='d-flex align-items-center justify-content-between'>
+                <h2>Books</h2>
+                <Link to='/add-book'>ADD</Link>
+            </div>
             {data.books && data.books.length > 0 && data.books.map(({id, name}) => (
                 <Link to={"/book?id="+id} key={id}>
                     <li onClick={openModal}>{name}</li>

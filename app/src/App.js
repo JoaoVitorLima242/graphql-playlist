@@ -1,5 +1,6 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, } from "react-router-dom";
+import AddBook from './pages/AddBook';
 import Author from './pages/Author';
 import Book from './pages/Book';
 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     element: <Book />
   },
   {
+    path: '/add-book',
+    element: <AddBook />
+  },
+  {
     path: '/author',
     element: <Author />
   }
@@ -28,7 +33,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <ApolloProvider client={client}>
-      <RouterProvider router={router}/>
+      <div>
+        <RouterProvider router={router}/>
+      </div>
     </ApolloProvider>
   );
 }
