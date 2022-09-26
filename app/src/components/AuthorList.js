@@ -22,7 +22,10 @@ const AuthorList = ({openModal}) => {
 
     return (
         <Card className='p-4'>
-            <h2>Authors</h2>
+            <div className='d-flex align-items-center justify-content-between'>
+                <h2>Authors</h2>
+                <Link to='/add-author'>ADD</Link>
+            </div>
             {data.authors && data.authors.length > 0 && data.authors.map(({id, name}) => (
                 <Link to={'/author?id='+id}><li key={id}>{name}</li></Link>
             ))}
